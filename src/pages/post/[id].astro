@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  return posts.map((post: any) => ({
+    params: { id: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data, slug } = post;
+const { title, author, image, description, pubDate } = data;
+const { url, alt } = image;
+
+const { Content } = await render(post);
+
+export const prerender = true;
+---
+
+<Layout title={`${title} - Dev Books`}>
+  <div class="flex gap-12">
+    <aside class="flex flex-col items-center gap-4">
+      <a href="/" class="hover:underline opacity-70">← Back to Home</a>
+      <img
+        transition:name={`img-${slug}`}
+        class="rounded w-72 h-auto"
+        src={`/${url}`}
+        alt={alt}
+      />
+      <p>🗓️ Posted <b>{pubDate}</b></p>
+      <p>✍️ By <b>{author}</b></p>
+    </aside>
+
+    <main class="max-w-3xl">
+      <h1 transition:name={`title-${slug}`} class="text-4xl font-bold mb-4">
+        {title}
+      </h1>
+      <div class="prose prose-invert">
+        <Content />
+      </div>
+    </main>
+  </div>
+</Layout>
