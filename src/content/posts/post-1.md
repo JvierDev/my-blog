@@ -3,7 +3,7 @@ title: "Efficient Package Management with pnpm"
 description: "Discover how pnpm revolutionizes package management for developers."
 author: "Javier"
 image:
-  url: "pnpm.svg"
+  url: "pnpm.jpg"
   alt: "The pnpm logo symbolizing streamlined package management."
 pubDate: "2025-04-08"
 tags: ["pnpm", "package management", "web development"]

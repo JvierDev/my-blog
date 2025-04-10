@@ -3,7 +3,7 @@ title: "Integrating APIs Seamlessly with Astro"
 description: "Learn how to connect dynamic APIs to Astro for interactive and engaging websites."
 author: "Javier"
 image:
-  url: "apis.png"
+  url: "apis.jpg"
   alt: "A galaxy representing the boundless possibilities of API integration."
 pubDate: "2025-04-08"
 tags: ["astro", "api integration", "web development"]
@@ -25,39 +25,29 @@ Follow these steps to integrate APIs into your Astro project:
 
 1. **Install Axios or Fetch**:
 
-   ```bash
-   npm install axios
-   ```
+```bash
+npm install axios
+```
 
-   Alternatively, use the native `fetch` API.
+Alternatively, use the native `fetch` API.
 
-2. **Create an API Call**: Inside a `.astro` file or a server-side function, fetch data:
-
-   ```bash
-   import axios from 'axios';
-
-   const fetchPosts = async () => {
-     const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-     return response.data;
-   };
-   const posts = await fetchPosts();
-   ```
+2. **Create an API Call**: Inside a `.astro` file or a server-side function.
 
 3. **Render Data in Astro Templates**: Use Astro’s components to display the fetched data:
 
-   ```bash
-   <ul>
-     {posts.map(post => (
-       <li>{post.title}</li>
-     ))}
-   </ul>
-   ```
+```astro
+<ul>
+  {posts.map(post => (
+  <li>{post.title}</li>
+  ))}
+</ul>
+```
 
 4. **Optimize Your Workflow**: Use environment variables to store sensitive credentials like API keys:
 
-   ```bash
-   API_KEY=your_api_key
-   ```
+```
+API_KEY=your_api_key
+```
 
 ## What's Next?
 
